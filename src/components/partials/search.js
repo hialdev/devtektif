@@ -46,7 +46,7 @@ export default function Search({className}){
                     {
                         data.cases?.length > 0 ? (
                             data.cases.map((cas) => (
-                                <li className="pb-4 my-4 border-b border-[#353535] group">
+                                <li key={cas.id} className="pb-4 my-4 border-b border-[#353535] group">
                                     <Link href={`/case/${cas.slug}`} className="block flex items-center gap-4">
                                         <img src={cas.image} alt={"Suggest Image of "+cas.title} className="block h-[4em] w-[5em] object-cover rounded-md" />
                                         <div className="">
@@ -69,7 +69,7 @@ export default function Search({className}){
                     {
                         data.articles?.length > 0 ? (
                             data.articles.map((art) => (
-                                <li className="pb-4 my-4 border-b border-[#353535] group">
+                                <li key={art.id} className="pb-4 my-4 border-b border-[#353535] group">
                                     <Link href={"/article/"+art.slug} className="block flex items-center gap-4">
                                         <img src={art.image} alt={art.title+" Image Suggest"} className="block h-[4em] w-[5em] object-cover rounded-md" />
                                         <div className="">
