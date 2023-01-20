@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+background-color: #191919 !important;
+}
 /* Color Guideline */
 .text-dt-prm{
   color: #8F00FF !important;

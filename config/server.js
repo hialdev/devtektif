@@ -16,6 +16,9 @@ app.prepare().then(() => {
     const articles = require('./api/article');
     server.use('/api',articles);
 
+    const services = require('./api/service');
+    server.use('/api',services);
+
     server.get('*', (req, res) => {
         return handle(req, res);
     });

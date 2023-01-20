@@ -1,14 +1,16 @@
 import { Icon } from "@iconify/react"
+import { formatDate } from "config/helper/date"
+import Image from "next/image"
 import Link from "next/link"
 
-export default function Article(){
+export default function Article({data}){
     return(
         <div>
-            <Link href="/" className="block p-3 rounded-[30px] overflow-hidden text-white border-2 border-dt-opa hover:border-gray-200 hover:bg-white hover:text-black">
-                <img src={"/assets/images/case-dummy.jpg"} alt={"image articles"} className="w-full max-h-[15em] object-cover object-center mb-3 rounded-t-3xl" />
-                <h3 className="font-medium text-md md:text-lg lg:text-2xl mb-5">Let’s Get Solution For Building Construction Work</h3>
+            <Link href={`/article/${data.slug}`} className="block p-3 rounded-[30px] overflow-hidden text-white border-2 border-dt-opa hover:border-gray-200 hover:bg-white hover:text-black">
+                <Image src={data.image} alt={`image of ${data.title}`} width={1450} height={1090} className="w-full max-h-[15em] object-cover object-center mb-3 rounded-t-3xl" />
+                <h3 className="font-medium text-md md:text-lg lg:text-2xl mb-5">{data.title}</h3>
                 <div className="flex items-center justify-between">
-                    <div className="text-sm text-gray-500">11 Januari 2023</div>
+                    <div className="text-sm text-gray-500">{formatDate(data.created)}</div>
                     <div className="flex items-center justify-center p-2 rounded-full bg-gray-200 text-black">
                         <Icon icon="ic:round-arrow-forward-ios" />
                     </div>

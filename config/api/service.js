@@ -6,11 +6,11 @@ const router = express()
 // API routes
 
 // Get
-router.get('/articles', (req, res) => {
+router.get('/services', (req, res) => {
     let limit = req.query.limit || ''
     let order = req.query.order || ''
     let search = req.query.search || ''
-    let query = 'SELECT * FROM articles'
+    let query = 'SELECT * FROM services'
     if (search) {query += ` WHERE title LIKE "%${search}%"`}
     if (order !== "latest") {query += ` ORDER BY created asc`} else {query += ` ORDER BY created desc`}
     if (limit) {

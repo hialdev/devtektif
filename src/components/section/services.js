@@ -1,12 +1,23 @@
 import { Icon } from "@iconify/react"
 import { ItemService } from ".."
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";
 
 import 'swiper/css';
 
 export default function Services(){
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        const getServices = async () => {
+            const res = await fetch('/api/services?limit=6&order=latest');
+            const data = await res.json();
+            setServices(data);
+        }
+        getServices()
+    }, [])
+    
     const swiperRef = useRef();
 
     return(
@@ -28,12 +39,11 @@ export default function Services(){
                         }}
                         className="mySwiper"
                     >
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
-                        <SwiperSlide style={{width:"auto"}}><ItemService className="w-[250px] text-white" /></SwiperSlide>
+                        {
+                            services.map((service)=>(
+                                <SwiperSlide key={service.id} style={{width:"auto"}}><ItemService data={service} className="w-[250px] text-white" /></SwiperSlide>
+                            ))
+                        }
                         <SwiperSlide style={{width:"auto"}}><ItemService className="w-[185px] text-white" more /></SwiperSlide>
                     </Swiper>
                     <div className="flex items-center gap-4 mt-10">
