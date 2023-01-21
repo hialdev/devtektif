@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "node config/server.js",
+    "start": "node server.js",
+    "postbuild": "npm run start",
     "lint": "next lint"
   },
   "dependencies": {
