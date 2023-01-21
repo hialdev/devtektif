@@ -10,13 +10,13 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
     const server = express();
 
-    const cases = require('./api/case');
+    const cases = require('./config/api/case');
     server.use('/api',cases);
     
-    const articles = require('./api/article');
+    const articles = require('./config/api/article');
     server.use('/api',articles);
 
-    const services = require('./api/service');
+    const services = require('./config/api/service');
     server.use('/api',services);
 
     server.get('*', (req, res) => {
