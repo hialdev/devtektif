@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const next = require('next');
 
-const dev = process.env.APP_DEV !== 'production';
+const hostname = process.env.APP_URL || 'localhost';
+const dev = process.env.NODE_ENV !== 'production';
 const port = parseInt(process.env.APP_PORT, 10) || 3000;
-const app = next({ dev });
+const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -25,7 +26,7 @@ app.prepare().then(() => {
 
     server.listen(port, (err) => {
         if (err) throw err;
-        console.log('> Ready on http://localhost:'+port);
+        console.log('> Ready on http://'+hostname+':'+port);
     });
 
 });
