@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "heroku-postbuild": "next build",
     "start": "NODE_ENV=production node server.js",
-    "postbuild": "npm run start",
     "lint": "next lint"
   },
   "dependencies": {
