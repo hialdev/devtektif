@@ -3,9 +3,8 @@ const express = require('express');
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
-const port = parseInt(process.env.APP_PORT, 10) || 3000;
-const host = process.env.APP_HOST || 'localhost'
-const app = next({ dev, host, port });
+const port = process.env.PORT || 3000;
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -40,7 +39,7 @@ app.prepare().then(() => {
 
     server.listen(port, (err) => {
         if (err) throw err;
-        console.log('> Ready on http://localhost:'+port);
+        console.log('> Ready on port '+port);
     });
 
 });
