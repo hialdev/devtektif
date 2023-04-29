@@ -16,7 +16,7 @@ export default function Home(){
             content="Devtektif is a IT Consultant based on Indonesia, We will investigate your problem and solve it like Detective!"
             key="desc"
           />
-          <meta property="og:url" content={process.env.APP_HOST + useRouter().route} />
+          <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_HOST + useRouter().route} />
           
         </Head>
         <Hero />
